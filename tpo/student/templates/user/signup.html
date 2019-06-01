@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block title %}SIGN UP{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!-- content -->
+
+  <div>
+			<form method="post">
+				{% csrf_token %}
+				{{form|crispy}}
+				{{form2|crispy}}
+				<input class="btn btn-success" type="submit" name="submit">
+			</form>
+		</div>
+
+
+{% endblock %}

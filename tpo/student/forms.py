@@ -17,11 +17,11 @@ class SignUpForm(UserCreationForm):
 # *************
 # Profile Signup Form
 # *************
-# class SignUpFormProfile(forms.ModelForm):
-#     birth_date = forms.DateTimeField(
-#         widget=forms.DateTimeInput(attrs={'placeholder': 'yyyy-mm-dd'}),
-#         )
-#     class Meta:
-#         model = Profile
-#         fields = ( 'birth_date', 'gender', )
+class SignUpFormProfile(forms.ModelForm):
+    birth_date = forms.DateTimeField(
+        widget=forms.DateTimeInput(attrs={'placeholder': 'yyyy-mm-dd'}),
+        )
+    class Meta:
+        model = Profile
+        fields = ( 'birth_date', 'gender', )
 

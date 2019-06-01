@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-  <title>Hello, world!</title>
+  <title>{% block title %}{% endblock %}</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -37,14 +37,34 @@
         <ul class="nav">
           <li class="nav-item active  ">
             <a class="nav-link" href="#0">
-              <i class="material-icons">dashboard bb</i>
-              <p>Dashboard b</p>
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item active  ">
             <a class="nav-link" href="#0">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <i class="material-icons">account_circle</i>
+              <p>User Profile</p>
+            </a>
+          </li>
+
+          <li class="nav-item active  ">
+            <a class="nav-link" href="#0">
+              <i class="material-icons">trip_origin</i>
+              <p>Interships</p>
+            </a>
+          </li>
+          <li class="nav-item active  ">
+            <a class="nav-link" href="#0">
+              <i class="material-icons">school</i>
+              <p>Jobs</p>
+            </a>
+          </li>
+
+          <li class="nav-item active  ">
+            <a class="nav-link" href="{% url 'logout' %}">
+              <i class="material-icons">navigate_before</i>
+              <p>Logout</p>
             </a>
           </li>
           <!-- your sidebar here -->
@@ -80,32 +100,28 @@
       <div class="content">
         <div class="container-fluid">
           <!-- your content here -->
-          <div>
-			<form method="post">
-				{% csrf_token %}
-				{{form|crispy}}
-				{{form2|crispy}}
-				<input type="submit" name="submit">
-			</form>
-		</div>
+        {% block content %}
+
+
+        {% endblock %}
 
         </div>
       </div>
-      <footer class="footer">
+     <!--  <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
+                <a href="#">
                   Creative Tim
                 </a>
               </li>
             </ul>
           </nav>
           
-          <!-- your footer here -->
+           your footer here
         </div>
-      </footer>
+      </footer> -->
     </div>
   </div>
 
