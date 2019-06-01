@@ -25,3 +25,21 @@ class SignUpFormProfile(forms.ModelForm):
         model = Profile
         fields = ( 'birth_date', 'gender', )
 
+
+class ProfileUpdateForm(forms.ModelForm):
+	class Meta:
+		model=Profile
+		fields=[
+				'name',          
+    			'email',
+    			'u_roll',     
+     			'city',
+     			'sem',        
+    			'gender',     
+    			'addess',     
+    			'birth_date', 
+    			'ditrict',    
+    			'pin',        
+    			'contact',    
+		]
+		

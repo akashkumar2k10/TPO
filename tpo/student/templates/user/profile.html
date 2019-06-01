@@ -1,5 +1,7 @@
 {% extends 'index.html' %}
-{% block title %}SIGN UP{% endblock %}
+{% block title %}Profile{% endblock %}
+{% block head %}Profile{% endblock %}
+
 
 {% load crispy_forms_tags %}
 
@@ -7,7 +9,12 @@
 
 <!-- content -->
 
-<h1>Welcome {{user.first_name}}</h1>
+
+<form method="post">
+                  {% csrf_token %}
+                  {{ p_form|crispy }}
+                  <button class="btn btn-danger" type="submit">Save</button>
+                </form>
 
 
 {% endblock %}

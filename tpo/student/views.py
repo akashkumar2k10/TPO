@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import *
 from .models import *
@@ -31,6 +31,8 @@ def register(request):
             user.save()
             a = Profile.objects.filter(user = user).first()
             a.gender = gender
+            a.name = user.first_name + " " + user.last_name
+            a.email=user.email
             a.birth_date = birth_date
             a.save()
             return HttpResponse("form saved")
@@ -44,7 +46,45 @@ def register(request):
     return render(request, 'user/signup.html',context)
 
 @login_required
-def profile(request):
-    arg={'user': request.user}
+def dashboard(request):
+    profile=Profile.objects.filter(user=request.user).first()
+    arg={
+        'user': request.user,
+        'profile':profile,
+    }
 
-    return render(request, 'user/profile.html', arg )
+
+    return render(request, 'user/dashboard.html', arg )
+
+
+@login_required
+def internships(request):
+    return render(request, 'user/internships.html')
+
+
+@login_required
+def profile(request):
+    print("******************************")
+    print(request.user)
+    print("******************************")
+    if request.method=='POST':
+        print("i am in")
+        p_form=ProfileUpdateForm(request.POST, instance=request.user.profile)
+        if p_form.is_valid():
+            print("******************************")
+            p_form.save()
+            print("******************************")
+            return redirect('profile')
+        
+    else:        
+        p_form=ProfileUpdateForm(instance=request.user.profile)
+
+
+    form ={'p_form': p_form,}    
+
+
+    return render(request, 'user/profile.html',form)
+
+@login_required
+def jobs(request):
+    return render(request, 'user/jobs.html')
