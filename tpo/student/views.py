@@ -59,7 +59,9 @@ def dashboard(request):
 
 @login_required
 def internships(request):
-    return render(request, 'user/internships.html')
+    intern_object=Internship.objects.all()
+
+    return render(request, 'user/internships.html',{'i':intern_object})
 
 
 @login_required
@@ -87,4 +89,5 @@ def profile(request):
 
 @login_required
 def jobs(request):
-    return render(request, 'user/jobs.html')
+    jobs_object = Jobs.objects.all()
+    return render(request, 'user/jobs.html',{'i':jobs_object})

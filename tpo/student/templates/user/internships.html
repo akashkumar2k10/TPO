@@ -9,4 +9,17 @@
 
 <!-- content -->
 
+{% for a in i %}
+<div class="jumbotron bg-secondary text-light ">
+	<div class="container">
+		<p>{{a.head|safe|escape }}</p>
+		<p>{{a.body|safe|escape }}</p>
+		<p><strong>Apply till {{a.ending_date}}</strong></p>
+	</div>	
+</div>
+
+{% endfor %}
+
+
+
 {% endblock %}

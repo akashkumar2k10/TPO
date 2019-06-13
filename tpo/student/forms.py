@@ -42,4 +42,6 @@ class ProfileUpdateForm(forms.ModelForm):
     			'pin',        
     			'contact',    
 		]
+
+		
 		
