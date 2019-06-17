@@ -3,7 +3,10 @@ from .models import *
 # Register your models here.
 
 class InternshipAdmin(admin.ModelAdmin):
-	list_display=('head','body','starting_date','ending_date')
+	list_display=('id','head','body','starting_date','ending_date')
+
+	def intern_id(self,obj):
+		return obj.id
 
 	def intern_body(self,obj):
 		return obj.body
@@ -16,5 +19,6 @@ class InternshipAdmin(admin.ModelAdmin):
 admin.site.register(Profile)
 admin.site.register(Internship,InternshipAdmin)
 admin.site.register(Jobs)
+admin.site.register(AppliedIntern)
 
 

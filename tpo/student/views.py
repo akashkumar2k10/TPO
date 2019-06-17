@@ -59,9 +59,23 @@ def dashboard(request):
 
 @login_required
 def internships(request):
-    intern_object=Internship.objects.all()
+    applied=0
+    if request.method == "POST":
+        
+        intern_id=request.POST.get("intern_Id")
+        if AppliedIntern.objects.filter(intern_id=intern_id ,user_id=request.user.id).exists():
+            #return HttpResponse("already applied")
+            applied=1
+        else:
+            obj=AppliedIntern.objects.create()
+            obj.intern_id=intern_id
+            obj.user_id=request.user.id
+            obj.save()
 
-    return render(request, 'user/internships.html',{'i':intern_object})
+
+    
+    intern_object=Internship.objects.all()
+    return render(request, 'user/internships.html',{'i':intern_object,'applied':applied})
 
 
 @login_required

@@ -12,4 +12,6 @@ urlpatterns=[
 	path('profile/', profile , name='profile' ),
 	path('internships/', internships , name='internships' ),
 	path('jobs/', jobs , name='jobs' ),
+	#path('ApplyToIntern/', ApplyToIntern , name='ApplyToIntern' ),
+
 ]

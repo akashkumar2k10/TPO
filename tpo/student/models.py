@@ -52,6 +52,7 @@ post_save.connect(create_profile,sender=User)
 
 class Internship(models.Model):
     #notice added day
+
     head          = models.CharField(max_length=100,null=True)
     body          = models.TextField(max_length=10000,null=True)
     starting_date = models.DateField(default=datetime.date.today,null=True)
@@ -70,6 +71,11 @@ class Jobs(models.Model):
     def __str__(self):
         return f'{self.head}'
 
+
+class AppliedIntern(models.Model):
+
+    intern_id     = models.PositiveIntegerField(null=True)
+    user_id       = models.PositiveIntegerField(null=True)
         
 
 

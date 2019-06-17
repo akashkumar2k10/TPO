@@ -12,9 +12,22 @@
 {% for a in i %}
 <div class="jumbotron bg-secondary text-light ">
 	<div class="container">
+		<p>{{a.id}}</p>
 		<p>{{a.head|safe|escape }}</p>
 		<p>{{a.body|safe|escape }}</p>
 		<p><strong>Apply till {{a.ending_date}}</strong></p>
+		{% if applied %}
+			<h1>Appled</h1>
+		{% endif %}	
+		<form method="post">
+			{% csrf_token %}
+			
+				
+			<input type="hidden" name="intern_Id" value="{{a.id}}">
+			<button class="btn btn-success" type="submit" name="submit">Apply</button>
+			
+		</form>
+
 	</div>	
 </div>
 
