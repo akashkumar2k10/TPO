@@ -25,18 +25,20 @@ SECRET_KEY = '6(-1f*5^7wwec&=$x-32b=ea+akw#b+uje5$frh0@2x!eerpb-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.186']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
     'student',
     'superuser',
     'crispy_forms',

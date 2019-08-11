@@ -1,11 +1,11 @@
-{% extends 'index.html' %}
+{% extends 'base2.html' %}
 {% block title %}SIGN UP{% endblock %}
 
-{% block head %}Sign Up{% endblock %}
+{% block tab_title %}Sign Up{% endblock %}
 
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags %}-
 
-{% block content %}
+{% block form %}
 
 <!-- content -->
 
@@ -19,4 +19,13 @@
 	</div>
 
 
+{% endblock %}
+
+{% block box_footer %}
+
+<div id="formFooter">
+      Already have an account?
+<a class="underlineHover" href="{% url 'login' %}">Login</a>
+    </div>
+    
 {% endblock %}

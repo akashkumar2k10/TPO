@@ -40,7 +40,13 @@ class ProfileUpdateForm(forms.ModelForm):
     			'birth_date', 
     			'ditrict',    
     			'pin',        
-    			'contact',    
+    			'contact',
+                'PREFRENCE_first',
+                'PREFRENCE_sec',
+                'PREFRENCE_third',
+                'Marks_10',
+                'Marks_12',
+				'Marks_Diploma',    
 		]
 
 		

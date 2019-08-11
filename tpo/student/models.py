@@ -12,7 +12,15 @@ GENDER = (
     ('Male','Male'),
 )
 
-SEM={
+PREFRENCE=(
+    ('','select'),
+    ('Placement','Placement'),
+    ('CAT','CAT'),
+    ('GATE','GATE'),
+    ('OTHER','OTHER'),
+    )
+
+SEM=(
 	('','select'),
 	('1','1'),
 	('2','2'),
@@ -22,7 +30,18 @@ SEM={
 	('6','6'),
 	('7','7'),
 	('8','8'),
-}
+)
+
+DEP=(
+    ('CSE','CSE'),
+    ('IT','IT'),
+    ('',''),
+    ('',),
+    ('',),
+    ('',),
+    ('',),
+    ('',),
+    )
 
 # ------------------------------------------------------------------------------------------------
 class Profile (models.Model):
@@ -38,7 +57,14 @@ class Profile (models.Model):
     ditrict         = models.CharField(verbose_name="District",max_length=50,null=True)
     pin             = models.PositiveIntegerField(verbose_name="Pin",null=True)
     contact         = models.PositiveIntegerField(verbose_name="Contact",null=True)
+    PREFRENCE_first = models.CharField(verbose_name="First prefrence",choices=PREFRENCE,null=True,max_length=20)
+    PREFRENCE_sec   = models.CharField(verbose_name="Second prefrence",choices=PREFRENCE,null=True,max_length=20)
+    PREFRENCE_third = models.CharField(verbose_name="Third prefrence",choices=PREFRENCE,null=True,max_length=20)
+    Marks_10        = models.CharField(verbose_name="10th Percentage", max_length=50,null=True)
+    Marks_12        = models.CharField(verbose_name="12th Percentage", max_length=50,null=True)
+    Marks_Diploma   = models.CharField(verbose_name="Diploma Percentage", max_length=50,null=True)
     
+
     def __str__(self):
         return f'{self.user.email}'
 
