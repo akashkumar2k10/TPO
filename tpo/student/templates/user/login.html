@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 {% block title %}Login{% endblock %}
 {% block tab_title %}Login{% endblock %}
 
@@ -7,10 +7,19 @@
 {% block form %}
 
 <!-- content -->
+
+{% if messages %}
+{% for message in messages %}
+	<div class="alert alert-{{ message.tags }}  alert-dismissible fade show" role = "alert">
+	{{ message }}
+	</div>
+{% endfor %}
+{% endif %}
+
 <form method="post">
                   {% csrf_token %}
                   {{ form|crispy }}
-                  <button class="btn btn-danger" type="submit">Login</button>
+                  <button class="btn btn-success" type="submit">Login</button>
                 </form>
 	
               
@@ -27,7 +36,7 @@
 
 
 <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" href="{% url 'password_reset'%}">Forgot Password?</a>
     </div>
 
 {% endblock %}

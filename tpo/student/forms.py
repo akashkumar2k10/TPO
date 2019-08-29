@@ -19,7 +19,7 @@ class SignUpForm(UserCreationForm):
 # *************
 class SignUpFormProfile(forms.ModelForm):
     birth_date = forms.DateTimeField(
-        widget=forms.DateTimeInput(attrs={'placeholder': 'yyyy-mm-dd'}),
+        widget=forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DD'},),
         )
     class Meta:
         model = Profile
@@ -30,7 +30,10 @@ class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model=Profile
 		fields=[
-				'name',          
+				'f_name',
+				'm_name',
+				'l_name',
+				'full_name',          
     			'email',
     			'u_roll',     
      			'city',
