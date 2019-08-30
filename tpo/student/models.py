@@ -104,7 +104,7 @@ class Internship(models.Model):
     body            = models.TextField(max_length=10000,null=True)
     apply_before    = models.DateField(default=datetime.date.today,null=True,blank=True)
     Campus_date     = models.DateField(default=datetime.date.today,null=True,blank=True)
-    Salary          = models.PositiveIntegerField(verbose_name="Salary",null=True,blank=True)
+    Stipend          = models.PositiveIntegerField(verbose_name="Salary",null=True,blank=True)
     Venue           = models.CharField(max_length=100,null=True,blank=True)
     Joining_location= models.CharField(max_length=100,null=True,blank=True)
     duration=models.Charfield(max_lenght=100,null=True)

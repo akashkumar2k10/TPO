@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% block title %}Internships{% endblock %}
+{% block head %}Internships{% endblock %}
+
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!-- content -->
+
+<!-- message -->
+
+<div class="jumbotron bg-secondary text-light ">
+	<div class="container">
+		<p>{{i.id}}</p>
+		<p>{{i.head|safe|escape }}</p>
+		<p>{{i.body|safe|escape }}</p>
+		<p><strong>Apply till {{i.apply_before}}</strong></p>
+        <p>Campus date {{i.Campus_date}}</p>
+        <p>Stipend  {{i.Stipend}}</p>
+        <p>Venue  {{i.Venue}}</p>
+        <p>Joining_location  {{i.Joining_location}}</p>
+        <p>Duration  {{i.duration}}</p>
+        <p>Description  {{i.Description}}</p>
+        <p>percentage_Aggregate {{i.percentage_Aggregate}}</p>
+        <p>percentage_12 {{i.percentage_12}}</p>
+        <p>percentage_10 {{i.percentage_10}}</p>
+        <p>experience {{i.experience}}</p>
+		<form method="post" id="intern_form">
+			{% csrf_token %}
+
+
+			<input type="hidden" name="intern_Id" value="{{i.id}}">
+			<button class="btn btn-success" type="submit" name="submit">Apply</button>
+
+		</form>
+
+
+
+
+	</div>
+</div>
+{% endfor %}
+
+
+
+{% endblock %}
