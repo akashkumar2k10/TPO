@@ -22,14 +22,14 @@ PREFRENCE=(
 
 SEM=(
 	('','select'),
-	('1','1'),
-	('2','2'),
-	('3','3'),
-	('4','4'),
-	('5','5'),
-	('6','6'),
-	('7','7'),
-	('8','8'),
+	(1,'1'),
+	(2,'2'),
+	(3,'3'),
+	(4,'4'),
+	(5,'5'),
+	(6,'6'),
+	(7,'7'),
+	(8,'8'),
 )
 
 DEP=(
@@ -52,7 +52,7 @@ class Profile (models.Model):
     email                   = models.EmailField(max_length=50,null=True)
     u_roll                  = models.PositiveIntegerField(verbose_name="University Roll no.",null=True)
     city                    = models.CharField(verbose_name="City", max_length=50,null=True)
-    sem                     = models.CharField(verbose_name="Semester",choices=SEM,null=True,max_length=1)
+    sem                     = models.PositiveIntegerField(verbose_name="Semester",choices=SEM,null=True)
     gender                  = models.CharField(verbose_name="Gender", default = 'Male', max_length=50,choices = GENDER,null=True)
     addess                  = models.CharField(verbose_name="Address", max_length=50,null=True)
     birth_date              = models.DateField(("Date of birth"), default=datetime.date.today,null=True)
@@ -62,12 +62,12 @@ class Profile (models.Model):
     PREFRENCE_first         = models.CharField(verbose_name="First prefrence",choices=PREFRENCE,null=True,max_length=20)
     PREFRENCE_sec           = models.CharField(verbose_name="Second prefrence",choices=PREFRENCE,null=True,max_length=20)
     PREFRENCE_third         = models.CharField(verbose_name="Third prefrence",choices=PREFRENCE,null=True,max_length=20)
-    Marks_10                = models.CharField(verbose_name="10th Percentage", max_length=50,null=True)
-    passing_year_10         = models.IntegerField(verbose_name="10th Passing Year YYYY",null=True)
-    Marks_12                = models.CharField(verbose_name="12th Percentage", max_length=50,null=True)
-    passing_year_12         = models.PositiveIntegerField(verbose_name="12th passing year YYYY",null=True)
-    Marks_Diploma           = models.CharField(verbose_name="Diploma Percentage", max_length=50,null=True)
-    addmission_year_Diploma = models.PositiveIntegerField(verbose_name="Admisson year Diploma",null=True)
+    Marks_10                = models.PositiveIntegerField(verbose_name="10th Percentage",null=True)
+    passing_year_10         = models.PositiveIntegerField(verbose_name="10th Passing Year YYYY",null=True)
+    Marks_12                = models.PositiveIntegerField(verbose_name="12th Percentage",null=True,blank=True)
+    passing_year_12         = models.PositiveIntegerField(verbose_name="12th passing year YYYY",null=True,blank=True)
+    Marks_Diploma           = models.PositiveIntegerField(verbose_name="Diploma Percentage",null=True,blank=True)
+    addmission_year_Diploma = models.PositiveIntegerField(verbose_name="Admisson year Diploma",null=True,blank=True)
     addmission_year_Diploma = models.PositiveIntegerField(verbose_name="Admisson year BE",null=True)
     backlog                 = models.PositiveIntegerField(verbose_name="No. of active backlog",null=True)
     sem_1_per               = models.PositiveIntegerField(verbose_name="1st Semester percentage",null=True)
@@ -84,7 +84,7 @@ class Profile (models.Model):
     emergency_contact       = models.PositiveIntegerField(verbose_name="Emergency Contact",null=True)
     course                  = models.CharField(verbose_name="Course", default = 'Male', max_length=50,choices = GENDER,null=True)
     Enrollment_no           = models.CharField(verbose_name="Enrollment no", max_length=50,null=True)
-    Dept                    = models.CharField(verbose_name="Course", max_length=50,choices = DEP,null=True)
+    Dept                    = models.CharField(verbose_name="Department", max_length=50,choices = DEP,null=True)
 
     def __str__(self):
         return f'{self.user.email}'
@@ -100,17 +100,17 @@ post_save.connect(create_profile,sender=User)
 class Internship(models.Model):
     #notice added day
 
-    head            = models.CharField(max_length=100,null=True)
-    body            = models.TextField(max_length=10000,null=True)
-    apply_before    = models.DateField(default=datetime.date.today,null=True,blank=True)
-    Campus_date     = models.DateField(default=datetime.date.today,null=True,blank=True)
-    Salary          = models.PositiveIntegerField(verbose_name="Salary",null=True,blank=True)
-    Venue           = models.CharField(max_length=100,null=True,blank=True)
-    Joining_location= models.CharField(max_length=100,null=True,blank=True)
+    head                = models.CharField(max_length=100,null=True)
+    body                = models.TextField(max_length=10000,null=True)
+    apply_before        = models.DateField(default=datetime.date.today,null=True,blank=True)
+    Campus_date         = models.DateField(default=datetime.date.today,null=True,blank=True)
+    Salary              = models.PositiveIntegerField(verbose_name="Salary",null=True,blank=True)
+    Venue               = models.CharField(max_length=100,null=True,blank=True)
+    Joining_location    = models.CharField(max_length=100,null=True,blank=True)
     percentage_Aggregate=models.PositiveIntegerField(verbose_name="Aggregate Percentage",null=True,blank=True)
-    percentage_12=models.PositiveIntegerField(verbose_name="Aggregate Percentage",null=True,blank=True)
-    percentage_10=models.PositiveIntegerField(verbose_name="Aggregate Percentage",null=True,blank=True)
-    experience      =models.CharField(max_length=100,null=True,blank=True)
+    percentage_12       =models.PositiveIntegerField(verbose_name="Aggregate Percentage",null=True,blank=True)
+    percentage_10       =models.PositiveIntegerField(verbose_name="Aggregate Percentage",null=True,blank=True)
+    experience          =models.CharField(max_length=100,null=True,blank=True)
     def __str__(self):
         return f'{self.head}'
 

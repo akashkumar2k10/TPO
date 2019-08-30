@@ -72,46 +72,58 @@ def dashboard(request):
     return render(request, 'user/dashboard.html', arg )
 
 
-@login_required
-def internships(request):
-    applied=0
-    if request.method == "POST":
-        profile=Profile.objects.filter(user=request.user).first()
+# @login_required
+# def internships(request):
+#     applied=0
+#     if request.method == "POST":
+#         profile=Profile.objects.filter(user=request.user).first()
         
-        intern_id=request.POST.get("intern_Id")
-        ########error intern_head=request.POST.get("intern_Head")
-        if AppliedIntern.objects.filter(intern_id=intern_id ,user_id=profile.u_roll).exists():
-            messages.warning(request,'You have alreay applied!')
+#         intern_id=request.POST.get("intern_Id")
+#         i=intern_id
+#         ########error intern_head=request.POST.get("intern_Head")
+#         if AppliedIntern.objects.filter(intern_id=intern_id ,user_id=profile.u_roll).exists():
+#             messages.warning(request,'You have alreay applied!')
             
-            #return HttpResponse("already applied")
-            applied=1
-            print("***********Applied**********")
-        else:
-            if(profile.u_roll==None):
-                messages.warning(request,'please fill the profile section!')    
-                return redirect('profile') 
-            obj=AppliedIntern.objects.create()
-            obj.intern_id=intern_id
-            obj.user_id=profile.u_roll
-            #intern mail
-            #subject = 'Successfully Register to'+str(intern_Head)
-            #print(intern_head)
-            # message = ' it  means a world to us '
-            # email_from = settings.EMAIL_HOST_USER
-            # recipient_list = [a.email,]
-            # print(recipient_list)
-            # send_mail( subject, message, email_from, recipient_list )
-            # ##########################
-            obj.save()
+#             #return HttpResponse("already applied")
+#             applied=1
+#             print("***********Applied**********")
+#         else:
+#             if(profile.u_roll==None):
+#                 messages.warning(request,'please fill the profile section!')    
+#                 return redirect('profile') 
+#             obj=AppliedIntern.objects.create()
+#             obj.intern_id=intern_id
+#             obj.user_id=profile.u_roll
+#             #intern mail
+#             #subject = 'Successfully Register to'+str(intern_Head)
+#             #print(intern_head)
+#             # message = ' it  means a world to us '
+#             # email_from = settings.EMAIL_HOST_USER
+#             # recipient_list = [a.email,]
+#             # print(recipient_list)
+#             # send_mail( subject, message, email_from, recipient_list )
+#             # ##########################
+#             obj.save()
 
-            messages.success(request, 'SuccessFully Aplied')
-            print("***********NOT ABLE TO APPLY**********")
+            
+
+#             messages.success(request, 'SuccessFully Aplied')
+#             print("***********NOT ABLE TO APPLY**********")
 
 
     
-    intern_object=Internship.objects.all()
-    return render(request, 'user/internships.html',{'i':intern_object,'applied':applied})
+#     intern_object=Internship.objects.all()
+#     return render(request, 'user/internships.html',{'i':intern_object,'applied':applied})
 
+@login_required
+def internships(request):
+    intern_object=Internship.objects.all()
+    return render(request, 'user/internships.html',{'i':intern_object})
+
+@login_required
+def company(request,intern_id):
+    return HttpResponse(intern_id)
+    
 
 @login_required
 def profile(request):
