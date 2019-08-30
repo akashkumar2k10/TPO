@@ -26,17 +26,24 @@
 		<p>{{a.id}}</p>
 		<p><a href="/company/{{a.id}}">{{a.head|safe|escape }}</a></p>
 		<p>{{a.body|safe|escape }}</p>
+<!-- <<<<<<< HEAD
 		<p><strong>Apply till {{a.ending_date}}</strong></p>
 
-		<!-- <form method="post" id="intern_form">
+		<form method="post" id="intern_form">
+======= -->
+		<!--<p><strong>Apply till {{a.ending_date}}</strong></p>
+		<form method="post" id="intern_form">
+>>>>>>> 59b50eb0b8fde7f6a96d94cb61a87a12a5c0afca
 			{% csrf_token %}
 			
 				
 			<input type="hidden" name="intern_Id" value="{{a.id}}">
 			<button class="btn btn-success" type="submit" name="submit">Apply</button>
+<<<<<<< HEAD
 		 -->			
 		<!-- </form> -->
 		
+					
 	
 		
 		
