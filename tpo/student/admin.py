@@ -51,4 +51,7 @@ from .models import *
 # admin.site.register(Jobs,JobAdmin)
 # admin.site.register(AppliedIntern,AppliedInternAdmin)
 
-
+admin.site.register(Profile)
+admin.site.register(Internship)
+admin.site.register(Jobs)
+admin.site.register(AppliedIntern)
