@@ -107,6 +107,8 @@ class Internship(models.Model):
     Salary          = models.PositiveIntegerField(verbose_name="Salary",null=True,blank=True)
     Venue           = models.CharField(max_length=100,null=True,blank=True)
     Joining_location= models.CharField(max_length=100,null=True,blank=True)
+    duration=models.Charfield(max_lenght=100,null=True)
+    Description=models.Charfield(max_lenght=1000,null=True)
     percentage_Aggregate=models.PositiveIntegerField(verbose_name="Aggregate Percentage",null=True,blank=True)
     percentage_12=models.PositiveIntegerField(verbose_name="Aggregate Percentage",null=True,blank=True)
     percentage_10=models.PositiveIntegerField(verbose_name="Aggregate Percentage",null=True,blank=True)
@@ -120,6 +122,10 @@ class Jobs(models.Model):
     body          = models.CharField(max_length=500,null=True)
     starting_date = models.DateField(default=datetime.date.today,null=True)
     ending_date   = models.DateField(default=datetime.date.today,null=True)
+    Eligible_Department=models.Charfield(max_lenght=500,null=True)
+    Job_description=models.Charfield(max_lenght=1000,null=True)
+    Skill_set = models.Charfield(max_lenght=1000, null=True)
+    Experience = models.Charfield(max_lenght=100, null=True)
 
     def __str__(self):
         return f'{self.head}'
