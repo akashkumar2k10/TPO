@@ -1,3 +1,4 @@
+
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -5,11 +6,14 @@
 <html lang="en">
 
 <head>
+    
+        
   <title>{% block title %}{% endblock %}</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link href="{% static 'css/index_style1.css' %}" rel="stylesheet" />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -19,52 +23,52 @@
 
 <body>
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white">
+    <div class="sidebar" data-color="blue" data-background-color="white">
       <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="#" class="simple-text logo-mini">
-          BIT,Durg
+        <a href="{% url 'dashboard' %}" class="simple-text logo-mini">
+          <strong>BIT,Durg</strong>
         </a>
-        <a href="#" class="simple-text logo-normal">
-          <small>Traning And Placement Cell</small>
+        <a href="{% url 'dashboard' %}" class="simple-text logo-normal">
+          <strong>Traning And Placement</strong>
         </a>
       </div>
-      <div class="sidebar-wrapper">
+      <div class="sidebar-wrapper" style="font-size: 50px">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item active ">
             <a class="nav-link" href="{% url 'dashboard' %}">
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <p class="text"><strong>Dashboard</strong></p>
             </a>
           </li>
           <li class="nav-item active  ">
             <a class="nav-link" href="{% url 'profile' %}">
               <i class="material-icons">account_circle</i>
-              <p>User Profile</p>
+              <p class="text">User Profile</p>
             </a>
           </li>
 
           <li class="nav-item active  ">
             <a class="nav-link" href="{% url 'internships' %}">
               <i class="material-icons">trip_origin</i>
-              <p>Interships</p>
+              <p class="text">Interships</p>
             </a>
           </li>
           <li class="nav-item active  ">
             <a class="nav-link" href="{% url 'jobs' %}">
               <i class="material-icons">school</i>
-              <p>Jobs</p>
+              <p class="text">Jobs</p>
             </a>
           </li>
 
           <li class="nav-item active  ">
             <a class="nav-link" href="{% url 'logout' %}">
               <i class="material-icons">navigate_before</i>
-              <p>Logout</p>
+              <p class="text">Logout</p>
             </a>
           </li>
           <!-- your sidebar here -->
@@ -73,13 +77,13 @@
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top a">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            {% block head %}
+           <h2> {% block head %}
 
 
-        {% endblock %}
+        {% endblock %}</h2>
          
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,16 +92,7 @@
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="material-icons">notifications</i> Notifications
-                </a>
-              </li>
-              <!-- your navbar here -->
-            </ul>
-          </div>
+          
         </div>
       </nav>
       <!-- End Navbar -->

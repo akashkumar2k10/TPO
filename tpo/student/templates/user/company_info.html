@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
-{% block title %}Internships{% endblock %}
-{% block head %}Internships{% endblock %}
-
+{% block title %}Company Infomation{% endblock %}
+{% block head %}Company Infomation{% endblock %}
+{% load static %}
 
 {% load crispy_forms_tags %}
 
@@ -9,24 +9,41 @@
 
 <!-- content -->
 
+{% if messages %}
+{% for message in messages %}
+	<div class="alert alert-{{ message.tags }}  alert-dismissible fade show" role = "alert">
+	{{ message }}
+	</div>
+{% endfor %}
+{% endif %}
 <!-- message -->
 
-<div class="jumbotron bg-secondary text-light ">
+<div class="">
 	<div class="container">
-		<p>{{i.id}}</p>
-		<p>{{i.head|safe|escape }}</p>
-		<p>{{i.body|safe|escape }}</p>
-		<p><strong>Apply till {{i.apply_before}}</strong></p>
-        <p>Campus date {{i.Campus_date}}</p>
-        <p>Stipend  {{i.Stipend}}</p>
-        <p>Venue  {{i.Venue}}</p>
-        <p>Joining_location  {{i.Joining_location}}</p>
-        <p>Duration  {{i.duration}}</p>
-        <p>Description  {{i.Description}}</p>
-        <p>percentage_Aggregate {{i.percentage_Aggregate}}</p>
-        <p>percentage_12 {{i.percentage_12}}</p>
-        <p>percentage_10 {{i.percentage_10}}</p>
-        <p>experience {{i.experience}}</p>
+		<strong>INTERNSHIP INFORMATION</strong>
+		<hr>
+		<img src="{{ i.image.url }}" >
+		<hr>
+		<table class="table">
+		<tr><td>JOB TILTE  				</td><td>{{i.company_name|safe|escape }}	</td></tr>
+		<tr><td>COMPANY Description 		</td>	<td>{{i.company_description|linebreaks }}</td></tr> 
+		<tr><td><strong>Apply Before Date  	</td>	<td>{{i.apply_before}}</strong></td></tr>
+        <tr><td>Campus date 				</td>	<td>{{i.Campus_date}} 		</td></tr>
+        <tr><td>Stipend  					</td>	<td>{{i.Stipend}} </td></tr>
+        <tr><td>Venue  						</td>	<td>{{i.Exam_Venue}} </td></tr>
+        <tr><td>Joining Location  			</td>	<td>{{i.Joining_location}}</td></tr> 
+        <tr><td>Duration  					</td>	<td>{{i.duration}} </td></tr>
+        <tr><td>Description  				</td>	<td>{{i.Description|linebreaks}} </td></tr>
+        <!-- <tr><td>percentage_Aggregate 		</td>	<td>{{i.percentage_Agg_clg}}</td> </tr>
+        <tr><td>percentage_12 				</td>	<td>{{i.percentage_12}} </td></tr>
+        <tr><td>percentage_10 				</td>	<td>{{i.percentage_10}} </td></tr> -->
+		<tr><td>Eligibility Criteria</td>   <td>10th Percentage atleast {{i.percentage_10}}<br>
+											12th Percentage atleast {{i.percentage_10}}<br>
+											College Percentage till now atleast {{i.percentage_Agg_clg}}<br>
+											
+											</td></tr>
+		<tr><td>other note 					</td>	<td>{{i.other_note|linebreaks}}</td></tr>
+        </table> 
 		<form method="post" id="intern_form">
 			{% csrf_token %}
 
@@ -41,7 +58,7 @@
 
 	</div>
 </div>
-{% endfor %}
+
 
 
 

@@ -1,0 +1,24 @@
+div.main-panel {
+    background-color: white;
+  }
+  .nav-link{
+    background-color: blue;
+    
+  }
+  .nav-item:hover{
+    background-color: black;
+    color: antiquewhite;
+    
+  }
+  div.sidebar-wrapper{
+    background-color: white;
+  }
+  div.logo{
+    background-color: white;
+  }
+a{
+  color: black;
+}
+div#div_id_resume.form-group{
+  
+}  

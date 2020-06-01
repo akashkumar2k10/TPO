@@ -7,8 +7,93 @@
 {% block content %}
 
 <!-- content -->
+<div style="height: 200px;" >
+<div class="row">
+    <strong><p>YOU APPIED tO:</p><br></strong>
+    {% if not ai and not aj %}
+    <strong>You have not applied yet.</strong>
+    {% else %}
+    <div class="col">
+            <p>Title</p>
+        {% for a in ai %}
+        
+           <p> <a href="/company/{{a.intern_id.id}}">{{a.intern_id.company_name}}</a></p>
+    
+        {% endfor %}
+        {% for a in aj %}
+        
+           <p> <a href="/job_company/{{a.job_id.id}}">{{a.job_id.company_name}}</a></p>
+    
+        {% endfor %}    
+    </div>
+    
+    <div class="col">
+            <p>Campus Date</p>
+            {% for a in ai %}
+            
+               <p> {{a.intern_id.Campus_date}}</p>
+        
+            {% endfor %}  
+            {% for a in aj %}
+            
+               <p> {{a.job_id.Campus_date}}</p>
+        
+            {% endfor %}   
+        </div>
+    {% endif %}  
+</div>
+</div>
+<div class="row">
+        <div class="col">
+            <p>Internship</p>
+            {% if not current_intern %}
+            <p>No Internship Available</p>
+            {% else %}
+        {% for a in current_intern %} <!--internship -->
+    
+    
+            <p><a href="/company/{{a.id}}">{{a.company_name}}</a></p>
+        <hr>    
+            
+    
+    {% endfor %}
+    {% endif %}
+</div>
+    <div class="col"> <!--jobs-->
+        <p>Jobs</p>
+        {% if not j %}
+        <p>No Jobs Available</p>
+        {% else %}
+        {% for a in j %} <!--internship -->
+    
+    
+            <p><a href="/job_company/{{a.id}}" disabled>{{a.company_name}}</a></p>
+        <hr>    
+            
+    
+    {% endfor %}
+    {% endif %}
 
-<h1>Welcome {{user.first_name}}</h1>
-<!-- <h1>email from profile {{profile.email}}</h1> -->
+    </div>
+    <div class="col">
+        <p>Past Internships</p>
+        {% if not past_intern %}
+        <p>No Past Internship</p>
+        {% else %}
+        {% for a in past_intern %} <!--internship -->
+           
+           
+                   <p>{{a.company_name}}</p>
+               <hr>    
+                   
+           
+           {% endfor %}
+           {% endif %}
+    </div>
+    </div>
+		
+	
+		
+		
 
 {% endblock %}

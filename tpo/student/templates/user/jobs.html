@@ -1,22 +1,46 @@
 {% extends 'index.html' %}
 
-{% block title %}Jobs{% endblock %}
+{% block title %}JOBS{% endblock %}
 {% block head %}Jobs{% endblock %}
+
 
 {% load crispy_forms_tags %}
 
 {% block content %}
 
 <!-- content -->
-{% for a in i %}
-<div class="jumbotron bg-secondary text-light ">
-	<div class="container">
-		<p>BITIN{{a.id}}</p>>
-				<p>{{a.head}}</p>
-				<p>{{a.body}}</p>
-				<p><strong>Apply till {{a.ending_date}}</strong></p>
-			</div>	
-		</div>}
+
+<!-- message -->
+{% if messages %}
+{% for message in messages %}
+	<div class="alert alert-{{ message.tags }}  alert-dismissible fade show" role = "alert">
+	{{ message }}
+	</div>
 {% endfor %}
+{% endif %}
+<!-- message -->
+<div>
+{% for a in i %}
+	 
+<!-- <div class="jumbotron bg-secondary text-dark">
+	<div class="container"> -->
+		<div class="row">
+		<div class="col">Title : <a href="/job_company/{{a.id}}">{{a.company_name|safe|escape }}</a></div>
+		<div class="col">
+			Apply till :&emsp;{{a.apply_before}}<br>
+			Campus Date :&emsp; {{a.Campus_date}}
+		</div>
+		<div class="col">	
+		<a href="/job_company/{{a.id}}/"><button class='btn float-right' >Views detail</a></button></div>
+		
+	</div>
+		<hr style="border-width: 2px;border-color: black">
+		
+		<!-- 		
+	</div>	
+</div>	   -->
+{% endfor %}
+
+</div>
 
 {% endblock %}
